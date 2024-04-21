@@ -43,6 +43,15 @@ function App() {
   const handleActive = () => setTodoType(2);
 
   useEffect(() => {
+    const todos = JSON.parse(localStorage.getItem("todos"));
+
+    if (todos && todos.length > 0) {
+      setTodos(todos);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
     const completedTodos = todos.filter((todo) => todo.checked);
     const activeTodos = todos.filter((todo) => !todo.checked);
     const arr3 = [todos, completedTodos, activeTodos];
