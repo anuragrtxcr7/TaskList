@@ -60,15 +60,15 @@ function TodoItem({ todo, index }) {
           disabled={isChecked}
         >
           {isTodoEditable ? (
-            "Save"
+            <i className="fa fa-save text-xl"></i>
           ) : (
-            "Edit"
+            <i className="fa fa-edit text-xl"></i>
           )}
         </button>
         <button
           onClick={() => deleteTodo(todo.id)}
         >
-          Delete
+          <i className="fa fa-trash text-xl"></i>
         </button>
         </div>
     </>
