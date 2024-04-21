@@ -1,7 +1,8 @@
 import { useState } from "react";
 
 
-function DropArea() {
+function DropArea({ onDrop }) {
+    const [showDrop, setShowDrop] = useState(false);
   return (
     <div
       onDragEnter={() => setShowDrop(true)}
