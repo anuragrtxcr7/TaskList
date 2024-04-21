@@ -24,7 +24,7 @@ function TodoItem({ todo, index }) {
 
   return (
     <>
-        <div>IndividualTodoItem</div>
+    <div>Individual Todo Item</div>
         <div>
         <input
           type="checkbox"
@@ -65,9 +65,7 @@ function TodoItem({ todo, index }) {
             "Edit"
           )}
         </button>
-        {/* Delete Todo Button */}
         <button
-          
           onClick={() => deleteTodo(todo.id)}
         >
           Delete
