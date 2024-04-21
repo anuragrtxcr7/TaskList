@@ -57,6 +57,21 @@ function App() {
     const arr3 = [todos, completedTodos, activeTodos];
     setCombinationTodos((hh) => arr3);
   }, [todos]);
+
+
+  const onDrop = (position) => {
+    if (activeCard === null || activeCard === undefined) return;
+    // if (position > activeCard)
+    //   console.log(`${activeCard} is going to ${position - 1}`);
+    // else console.log(`${activeCard} is going to ${position}`);
+    const todoToMove = todos[activeCard];
+    const updatedTodos = todos.filter((_, index) => index !== activeCard);
+
+    updatedTodos.splice(position > activeCard ? position - 1 : position, 0, {
+      ...todoToMove,
+    });
+    setTodos(updatedTodos);
+  };
   
 
   return (
@@ -108,12 +123,12 @@ function App() {
 
         <div className="flex flex-wrap">
           <div className="w-full">
-            <DropArea/>
+            <DropArea onDrop={() => onDrop(0)}/>
           </div>
           {combinationTodos[todoType]?.map((todo,index)=>(
             <div key={index} className="w-full">
               <TodoItem todo={todo} setActiveCard={setActiveCard} index={index}/>
-              <DropArea/>
+              <DropArea onDrop={() => onDrop(index + 1)}/>
             </div>
           ))}
         </div>
