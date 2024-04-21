@@ -53,35 +53,44 @@ function App() {
   
   return (
     <TodoProvider value={{todos, addTodo, updateTodo, deleteTodo, toggleTodoCheck}}>
-      <div>
-        <h1>
+      <div className="w-full backdrop-blur-lg max-w-xl m-auto p-10 mt-5 shadow-md rounded-lg">
+        <h1 className="text-6xl text-pink-600 font-bold text-center mb-8 mt-2">
           TaskList
         </h1>
         <br />
-        <div>
+        <div className="mb-4">
           <TodoForm/>
         </div>
         <br />
-        <div>
-          <div>
+        <div className="flex flex-wrap items-center justify-evenly">
+        <div className={`mr-16 border-4 rounded-lg ${ todoType=== 0 ? "border-black" : "border-purple-400"}`}
+          >
             <Button variant="contained" color="secondary" onClick={handleAll}>
-              <div>All</div>{" "}
+              <div className="h-7 text-xl">All</div>{" "}
             </Button>
           </div>
-          <div>
+          <div
+            className={`border-4 rounded-lg ${
+              todoType === 1 ? "border-black" : "border-green-400"
+            }`}
+          >
             <Button
               variant="contained"
               color="success"
-              onClick={handleCompleted}>
-              <div >
+              onClick={handleCompleted}
+            >
+              <div className="h-7 text-xl items-center justify-center">
                 Completed
               </div>
             </Button>
           </div>
           <div
+            className={`ml-16 border-4 rounded-lg ${
+              todoType === 2 ? "border-black" : "border-red-400"
+            }`}
           >
             <Button variant="contained" color="error" onClick={handleActive}>
-              <div >
+              <div className="h-7 text-xl items-center justify-center">
                 Active
               </div>
             </Button>
@@ -89,9 +98,9 @@ function App() {
         </div>
         <br />
 
-        <div>
+        <div className="flex flex-wrap">
           {combinationTodos[todoType]?.map((todo,index)=>(
-            <div key={index}>
+            <div key={index} className="w-full">
               <TodoItem todo={todo} index={index}/>
             </div>
           ))}
