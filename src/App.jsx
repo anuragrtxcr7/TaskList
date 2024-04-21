@@ -76,20 +76,18 @@ function App() {
 
   return (
     <TodoProvider value={{todos, addTodo, updateTodo, deleteTodo, toggleTodoCheck}}>
-      <div className="w-full backdrop-blur-lg max-w-xl m-auto p-10 mt-5 shadow-md rounded-lg">
-        <h1 className="text-6xl text-pink-600 font-bold text-center mb-8 mt-2">
+      <div className="w-full backdrop-blur-lg max-w-xl m-auto p-10 shadow-md rounded-lg">
+        <h1 className="text-5xl text-pink-600 font-bold text-center mb-10">
           TaskList
         </h1>
-        <br />
-        <div className="mb-4">
+        <div >
           <TodoForm/>
         </div>
-        <br />
-        <div className="flex flex-wrap items-center justify-evenly">
-        <div className={`mr-16 border-4 rounded-lg ${ todoType=== 0 ? "border-black" : "border-purple-400"}`}
+        <div className="flex flex-wrap items-center justify-evenly mt-10">
+        <div className={`border-4 rounded-lg ${ todoType=== 0 ? "border-black" : "border-purple-400"}`}
           >
             <Button variant="contained" color="secondary" onClick={handleAll}>
-              <div className="h-7 text-xl">All</div>{" "}
+              <div className="h-6 text-lg">All</div>{" "}
             </Button>
           </div>
           <div
@@ -102,26 +100,25 @@ function App() {
               color="success"
               onClick={handleCompleted}
             >
-              <div className="h-7 text-xl items-center justify-center">
+              <div className="h-6 text-lg items-center justify-center">
                 Completed
               </div>
             </Button>
           </div>
           <div
-            className={`ml-16 border-4 rounded-lg ${
+            className={`border-4 rounded-lg ${
               todoType === 2 ? "border-black" : "border-red-400"
             }`}
           >
             <Button variant="contained" color="error" onClick={handleActive}>
-              <div className="h-7 text-xl items-center justify-center">
+              <div className="h-6 text-lg items-center justify-center">
                 Active
               </div>
             </Button>
           </div>
         </div>
-        <br />
 
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap mt-5">
           <div className="w-full">
             <DropArea onDrop={() => onDrop(0)}/>
           </div>
