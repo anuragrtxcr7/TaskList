@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useTodo } from "../api-contexts/TodoContext";
 
-function TodoItem({ todo, index }) {
+function TodoItem({ todo, setActiveCard, index }) {
   const [isTodoEditable, setIsTodoEditable] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [todoMsg, setTodoMsg] = useState("");
@@ -24,7 +24,14 @@ function TodoItem({ todo, index }) {
 
   return (
     <>
-        <div className={`flex h-16 border-4 rounded-xl px-3 py-1.5 gap-x-3 shadow-sm shadow-white/50 duration-300 text-black 
+        <div 
+        draggable
+        onDragStart={() => setActiveCard(index)}
+        onDragEnd={() => {
+          setActiveCard(null);
+        }}
+        style={{ cursor: "grab" }}
+        className={`flex h-16 border-4 rounded-xl px-3 py-1.5 gap-x-3 shadow-sm shadow-white/50 duration-300 text-black 
           ${
             isTodoEditable
               ? "bg-blue-300 border-blue-600"
@@ -35,7 +42,7 @@ function TodoItem({ todo, index }) {
           `}>
         <input
           type="checkbox"
-          className="w-8"
+          className="cursor-pointer w-8"
           checked={isChecked}
           onChange={toggleCheck}
           disabled={isTodoEditable}

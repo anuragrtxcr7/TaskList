@@ -1,8 +1,7 @@
 import './App.css'
-import { TodoForm, TodoItem } from './components/index'
+import { TodoForm, TodoItem, DropArea } from './components/index'
 import { useState, useEffect } from 'react'
 import { TodoProvider } from './api-contexts/TodoContext'
-// import { useId } from 'react'
 import { Button } from '@mui/material'
 
 
@@ -11,7 +10,7 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [combinationTodos, setCombinationTodos] = useState([]);
   const [todoType, setTodoType] = useState(0);
-
+  const [activeCard, setActiveCard] = useState(null);
 
 
   const addTodo = (todo) => {
@@ -49,6 +48,7 @@ function App() {
       setTodos(todos);
     }
   }, []);
+
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -107,9 +107,13 @@ function App() {
         <br />
 
         <div className="flex flex-wrap">
+          <div className="w-full">
+            <DropArea/>
+          </div>
           {combinationTodos[todoType]?.map((todo,index)=>(
             <div key={index} className="w-full">
-              <TodoItem todo={todo} index={index}/>
+              <TodoItem todo={todo} setActiveCard={setActiveCard} index={index}/>
+              <DropArea/>
             </div>
           ))}
         </div>
