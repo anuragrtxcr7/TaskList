@@ -5,5 +5,5 @@
 body {
   background-image: url("../images/bg.png");
   background-size: cover;
-  /* min-width: 650px; */
+  min-width: 650px;
 }
