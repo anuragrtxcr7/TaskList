@@ -2,12 +2,16 @@ import './App.css'
 import { TodoForm, TodoItem } from './components/index'
 import { useState, useEffect } from 'react'
 import { TodoProvider } from './api-contexts/TodoContext'
-import { useId } from 'react'
+// import { useId } from 'react'
+import { Button } from '@mui/material'
 
 
 function App() {
 
   const [todos, setTodos] = useState([]);
+  const [combinationTodos, setCombinationTodos] = useState([]);
+  const [todoType, setTodoType] = useState(0);
+
 
 
   const addTodo = (todo) => {
@@ -44,6 +48,31 @@ function App() {
         <br />
         <div>
           <TodoForm/>
+        </div>
+        <br />
+        <div>
+          <div>
+            <Button variant="contained" color="secondary">
+              <div>All</div>{" "}
+            </Button>
+          </div>
+          <div>
+            <Button
+              variant="contained"
+              color="success">
+              <div >
+                Completed
+              </div>
+            </Button>
+          </div>
+          <div
+          >
+            <Button variant="contained" color="error">
+              <div >
+                Active
+              </div>
+            </Button>
+          </div>
         </div>
         <br />
 
