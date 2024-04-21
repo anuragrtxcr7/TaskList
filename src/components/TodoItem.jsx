@@ -24,7 +24,6 @@ function TodoItem({ todo, index }) {
 
   return (
     <>
-    <div>Individual Todo Item</div>
         <div className={`flex h-16 border-4 rounded-xl px-3 py-1.5 gap-x-3 shadow-sm shadow-white/50 duration-300 text-black 
           ${
             isTodoEditable

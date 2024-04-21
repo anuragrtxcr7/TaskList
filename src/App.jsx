@@ -59,7 +59,6 @@ function App() {
   }, [todos]);
   
 
-  
   return (
     <TodoProvider value={{todos, addTodo, updateTodo, deleteTodo, toggleTodoCheck}}>
       <div className="w-full backdrop-blur-lg max-w-xl m-auto p-10 mt-5 shadow-md rounded-lg">

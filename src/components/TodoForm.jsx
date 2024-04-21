@@ -20,7 +20,6 @@ const add = (e) =>{
 
   return (
     <>
-    <div>TodoForm</div>
     <form onSubmit={add} className="flex">
       <input
         type="text"
@@ -36,12 +35,7 @@ const add = (e) =>{
         Add
       </button>
     </form>
-
-
     </>
-
-    
-
   )
 }
 
