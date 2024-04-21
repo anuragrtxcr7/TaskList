@@ -5,14 +5,14 @@ function TodoItem({ todo, index }) {
   const [isTodoEditable, setIsTodoEditable] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [todoMsg, setTodoMsg] = useState("");
-  const { updateTodo, deleteTodo, toggleCheckTodo } = useTodo();
+  const { updateTodo, deleteTodo, toggleTodoCheck } = useTodo();
 
   const editTodo = () => {
     updateTodo(todo.id, { ...todo, todo: todoMsg });
   };
 
   const toggleCheck = () => {
-    toggleCheckTodo(todo.id);
+    toggleTodoCheck(todo.id);
     setIsChecked((value) => !value);
   };
 
@@ -26,12 +26,12 @@ function TodoItem({ todo, index }) {
     <>
         <div>IndividualTodoItem</div>
         <div>
-        {/* <input
+        <input
           type="checkbox"
           checked={isChecked}
           onChange={toggleCheck}
           disabled={isTodoEditable}
-        /> */}
+        />
         <input
           type="text"
           
@@ -46,9 +46,7 @@ function TodoItem({ todo, index }) {
           onChange={(e) => setTodoMsg(e.target.value)}
           readOnly={!isTodoEditable}
         />
-        <button
-          
-          onClick={() => {
+        <button onClick={() => {
             if (!todoMsg.trim()) {
               setTodoMsg("");
               return;
@@ -62,9 +60,9 @@ function TodoItem({ todo, index }) {
           disabled={isChecked}
         >
           {isTodoEditable ? (
-            Save
+            "Save"
           ) : (
-            Edit
+            "Edit"
           )}
         </button>
         {/* Delete Todo Button */}
