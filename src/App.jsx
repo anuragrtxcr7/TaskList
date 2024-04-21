@@ -38,6 +38,18 @@ function App() {
     );
   };
 
+  const handleAll = () => setTodoType(0);
+  const handleCompleted = () => setTodoType(1);
+  const handleActive = () => setTodoType(2);
+
+  useEffect(() => {
+    const completedTodos = todos.filter((todo) => todo.checked);
+    const activeTodos = todos.filter((todo) => !todo.checked);
+    const arr3 = [todos, completedTodos, activeTodos];
+    setCombinationTodos((hh) => arr3);
+  }, [todos]);
+  
+
   
   return (
     <TodoProvider value={{todos, addTodo, updateTodo, deleteTodo, toggleTodoCheck}}>
@@ -52,14 +64,15 @@ function App() {
         <br />
         <div>
           <div>
-            <Button variant="contained" color="secondary">
+            <Button variant="contained" color="secondary" onClick={handleAll}>
               <div>All</div>{" "}
             </Button>
           </div>
           <div>
             <Button
               variant="contained"
-              color="success">
+              color="success"
+              onClick={handleCompleted}>
               <div >
                 Completed
               </div>
@@ -67,7 +80,7 @@ function App() {
           </div>
           <div
           >
-            <Button variant="contained" color="error">
+            <Button variant="contained" color="error" onClick={handleActive}>
               <div >
                 Active
               </div>
@@ -77,7 +90,7 @@ function App() {
         <br />
 
         <div>
-          {todos?.map((todo,index)=>(
+          {combinationTodos[todoType]?.map((todo,index)=>(
             <div key={index}>
               <TodoItem todo={todo} index={index}/>
             </div>
