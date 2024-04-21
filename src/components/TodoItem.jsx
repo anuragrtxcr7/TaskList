@@ -1,46 +1,28 @@
-import React, {useState} from 'react'
-import { useTodo } from '../api-contexts/TodoContext'
+import { useEffect, useState } from "react";
+import { useTodo } from "../api-contexts/TodoContext";
 
-function TodoItem() {
+function TodoItem({ todo, index }) {
+  const [isTodoEditable, setIsTodoEditable] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+  const [todoMsg, setTodoMsg] = useState("");
+  const { updateTodo, deleteTodo, toggleCheckTodo } = useTodo();
 
-const[todo, setTodo] = useState("");
-const {addTodo} = useTodo();
+  const editTodo = () => {
+    updateTodo(todo.id, { ...todo, todo: todoMsg });
+  };
 
-const add = (e) =>{
-    e.preventDefault();
-    const gg = todo;
-    if(!todo.trim()){
-        setTodo("");
-        return;
-    }
+  const toggleCheck = () => {
+    toggleCheckTodo(todo.id);
+    setIsChecked((value) => !value);
+  };
 
-    addTodo({todo, checked:false});
-    setTodo("");
+  useEffect(() => {
+    setTodoMsg(todo.todo);
+    setIsTodoEditable(false);
+    setIsChecked(todo.completed);
+  }, [todo]);
+
+  return <div>TodoItem</div>;
 }
 
-  return (
-    <>
-    <div>TodoItem</div>
-    <form onSubmit={add}>
-      <input
-        type="text"
-        placeholder="Write Todo..."
-        value={todo}
-        onChange={(e) => setTodo(e.target.value)}
-      />
-      <button
-        type="submit" /* submit a non-empty todo */
-      >
-        Add
-      </button>
-    </form>
-
-
-    </>
-
-    
-
-  )
-}
-
-export default TodoItem
+export default TodoItem;
