@@ -19,10 +19,64 @@ function TodoItem({ todo, index }) {
   useEffect(() => {
     setTodoMsg(todo.todo);
     setIsTodoEditable(false);
-    setIsChecked(todo.completed);
+    setIsChecked(todo.checked);
   }, [todo]);
 
-  return <div>TodoItem</div>;
+  return (
+    <>
+        <div>IndividualTodoItem</div>
+        <div>
+        {/* <input
+          type="checkbox"
+          checked={isChecked}
+          onChange={toggleCheck}
+          disabled={isTodoEditable}
+        /> */}
+        <input
+          type="text"
+          
+          style={
+            isChecked
+              ? {
+                  textDecoration: "line-through",
+                }
+              : null
+          }
+          value={todoMsg}
+          onChange={(e) => setTodoMsg(e.target.value)}
+          readOnly={!isTodoEditable}
+        />
+        <button
+          
+          onClick={() => {
+            if (!todoMsg.trim()) {
+              setTodoMsg("");
+              return;
+            }
+
+            if (isTodoEditable) {
+              editTodo();
+            }
+            setIsTodoEditable((prev) => !prev);
+          }}
+          disabled={isChecked}
+        >
+          {isTodoEditable ? (
+            Save
+          ) : (
+            Edit
+          )}
+        </button>
+        {/* Delete Todo Button */}
+        <button
+          
+          onClick={() => deleteTodo(todo.id)}
+        >
+          Delete
+        </button>
+        </div>
+    </>
+  )
 }
 
 export default TodoItem;
