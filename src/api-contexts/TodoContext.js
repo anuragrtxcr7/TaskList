@@ -1,5 +1,7 @@
 import {createContext, useContext} from "react"
 
+// Implemeted the Context functionality
+
 export const TodoContext = createContext({
     todos: [
         {

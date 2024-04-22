@@ -1,8 +1,9 @@
 import { useState } from "react";
 
 
+// made a intermediate state Drop Area that Appears whenever the user attempts to Drag todos and drop them.
 function DropArea({ onDrop }) {
-    const [showDrop, setShowDrop] = useState(false);
+  const [showDrop, setShowDrop] = useState(false);
   return (
     <div
       onDragEnter={() => setShowDrop(true)}
@@ -20,7 +21,7 @@ function DropArea({ onDrop }) {
     >
       Drop
     </div>
-  )
+  );
 }
 
-export default DropArea
+export default DropArea;
