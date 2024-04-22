@@ -35,7 +35,7 @@ Currently, two official plugins are available:
 - It includes Filter Button that lets us Filter Tasks based on ALL tasks, Completed Tasks and Active Tasks.
 - When a Task is Marked as done Its Striken Through.
 - It includes a Drag and Drop Functionlity for Websites where user can drag and drop tasks when viewing all tasks.
-- Used core Redux functionalities including redux-toolkit.
+- Used core API Context functionalities.
 
 # Packages/Dependencies
 
